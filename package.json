@@ -1,0 +1,15 @@
+{
+  "name": "cy-playground",
+  "version": "1.0.0",
+  "description": "This is a playground for cypress",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cy:open": "cypress open"
+  },
+  "author": "Muthash",
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^4.8.0"
+  }
+}
