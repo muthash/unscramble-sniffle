@@ -1,6 +1,6 @@
 describe('Create and mark-unmark as favorite', () => {
     it('Sign in', () => {
-        cy.visit('https://react-redux.realworld.io/#/login')
+        cy.visit('/#/login')
         cy.title().should('eq', 'Conduit')
         cy.location('protocol').should('eq', 'https:')
         // cy.get('input[type=email]').type('muthash@github.com')

@@ -21,7 +21,9 @@ describe('Create and mark-unmark as favorite', () => {
         cy.get('.ion-heart').first().click()
         cy.contains('Favorited Articles').click()
         cy.url().should('include', 'favorites')
-        cy.get('.ion-heart').click({multiple: true})
+        cy.get('.article-preview').within(($preview) => {
+            cy.get('.ion-heart').click({multiple: true})
+        })
         cy.reload()
         cy.contains('No articles are here... yet.').should('be.visible')
         cy.go('back')
