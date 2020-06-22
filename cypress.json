@@ -1,5 +1,17 @@
 {
     "baseUrl": "https://react-redux.realworld.io",
-    "screenshotsFolder": "cypress/fixtures/screenshots",
-    "integrationFolder":"cypress/test"
+    "integrationFolder":"cypress/test",
+    "screenshotsFolder": "cypress/results/screenshots",
+    "videosFolder":"cypress/results/videos",
+    "reporter": "cypress-multi-reporters",
+    "reporterOptions": {
+        "reporterEnabled": "mochawesome",
+        "mochawesomeReporterOptions": {
+            "reportDir": "cypress/reports/mocha",
+            "quite": true,
+            "overwrite": false,
+            "html": false,
+            "json": true
+        }
+    }
 }
