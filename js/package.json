@@ -1,0 +1,15 @@
+{
+  "name": "js-playground",
+  "version": "1.0.0",
+  "description": "JS playground for learning",
+  "main": "01_basics.js",
+  "scripts": {
+    "basics": "nodemon 01_Basics.js"
+  },
+  "author": "Muthash",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^8.0.1"
+  }
+}
