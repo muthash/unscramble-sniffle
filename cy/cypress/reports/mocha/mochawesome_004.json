@@ -1,0 +1,131 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 1,
+    "pending": 0,
+    "failures": 1,
+    "start": "2020-06-19T11:45:43.992Z",
+    "end": "2020-06-19T11:45:55.199Z",
+    "duration": 11207,
+    "testsRegistered": 2,
+    "passPercent": 50,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "70f1df79-28c6-43ea-8691-ef6571db74eb",
+      "title": "",
+      "fullFile": "cypress/test/conduit/SM05_aliases.spec.js",
+      "file": "cypress/test/conduit/SM05_aliases.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "246f18b2-893c-466b-955e-5cf326b3d190",
+          "title": "Create and mark-unmark as favorite",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Create a post",
+              "fullTitle": "Create and mark-unmark as favorite Create a post",
+              "timedOut": null,
+              "duration": 5100,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('ul.navbar-nav').children().as('menu');\ncy.get('@menu').contains('New Post').click();\ncy.hash().should('include', '#/editor');\ncy.get('form').within(function ($form) {\n  cy.get('input').first().type('Test');\n  cy.get('input').eq(1).type('Test 1');\n  cy.get('textarea').last().type('Test 2');\n  cy.contains('Publish Article').click();\n});\ncy.url().should('include', 'article');",
+              "err": {},
+              "uuid": "93851c4a-f45f-45c8-a297-ae071c9dc7ab",
+              "parentUUID": "246f18b2-893c-466b-955e-5cf326b3d190",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Mark-unmark as favorite",
+              "fullTitle": "Create and mark-unmark as favorite Mark-unmark as favorite",
+              "timedOut": null,
+              "duration": 5968,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('ul.navbar-nav').children().as('menu');\ncy.get('@menu').contains('muthash').click();\ncy.contains('My Articles').should('be.visible');\ncy.get('.ion-heart').first().click();\ncy.contains('Favorited Articles').click();\ncy.url().should('include', 'favorites');\ncy.get('.btn-primary').first().then(function ($fav) {\n  return $fav.text();\n}).as('favCount');\ncy.get('@favCount').then(function ($cnt) {\n  expect(parseInt($cnt)).to.eq(1);\n});\ncy.get('.btn-primary').first().click();\ncy.reload();\ncy.contains('No articles are here... yet.').should('be.visible');\ncy.go('back');",
+              "err": {
+                "message": "AssertionError: Timed out retrying: Expected to find element: `.btn-primary`, but never found it.",
+                "estack": "AssertionError: Timed out retrying: Expected to find element: `.btn-primary`, but never found it.\n    at Context.eval (https://react-redux.realworld.io/__cypress/tests?p=cypress/test/conduit/SM05_aliases.spec.js:28:8)",
+                "diff": null
+              },
+              "uuid": "b9a3de47-d37e-4486-a2e9-f7a34441a474",
+              "parentUUID": "246f18b2-893c-466b-955e-5cf326b3d190",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "93851c4a-f45f-45c8-a297-ae071c9dc7ab"
+          ],
+          "failures": [
+            "b9a3de47-d37e-4486-a2e9-f7a34441a474"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 11068,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.1.1"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports/mocha",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "5.1.0"
+    }
+  }
+}

@@ -10,3 +10,11 @@ describe('Read-Write files content', function(){
        cy.readFile('sampleFile').should('contains', 'Hello World')
     })
 })
+
+if (excessOptin.toString().toLowerCase().equals("yes")){
+    
+} else {
+    setDoingBusinessAs(testData.getCompanyName());   
+}
+
+app-modal-close-button

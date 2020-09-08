@@ -1,0 +1,497 @@
+{
+  "stats": {
+    "suites": 6,
+    "tests": 11,
+    "passes": 10,
+    "pending": 0,
+    "failures": 1,
+    "start": "2020-06-19T11:46:07.816Z",
+    "end": "2020-06-19T11:46:07.816Z",
+    "duration": 45245,
+    "testsRegistered": 11,
+    "passPercent": 90.9090909090909,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "15697484-33ee-4bd8-a356-79007de15ebe",
+      "title": "",
+      "fullFile": "cypress/test/conduit/SM01_login.spec.js",
+      "file": "cypress/test/conduit/SM01_login.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "7e8e2636-03ab-4872-ad61-1be6b5aefd5b",
+          "title": "Login",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Sign in",
+              "fullTitle": "Login Sign in",
+              "timedOut": null,
+              "duration": 4500,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('/');\ncy.get('.navbar').contains('Sign in').click();\ncy.get('input[type=email]').type('muthash@github.com');\ncy.get('input[type=password]').type('muthash123');\ncy.get('.btn').contains('Sign in').should('be.visible').click();",
+              "err": {},
+              "uuid": "b2b2f65c-2234-4872-967a-c8e7c174a6ba",
+              "parentUUID": "7e8e2636-03ab-4872-ad61-1be6b5aefd5b",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "b2b2f65c-2234-4872-967a-c8e7c174a6ba"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 4500,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "7dc6c44c-ad15-46a0-b003-42145f8c640b",
+      "title": "",
+      "fullFile": "cypress/test/conduit/SM02_create_post.spec.js",
+      "file": "cypress/test/conduit/SM02_create_post.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "f8cd4fb7-84ef-45f0-881f-3c3e989394f0",
+          "title": "Create and mark-unmark as favorite",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Sign in",
+              "fullTitle": "Create and mark-unmark as favorite Sign in",
+              "timedOut": null,
+              "duration": 3761,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('/#/login');\ncy.title().should('eq', 'Conduit');\ncy.location('protocol').should('eq', 'https:'); // cy.get('input[type=email]').type('muthash@github.com')\n// cy.get('input[type=password]').type('muthash123')\n// cy.get('.btn').contains('Sign in').should('be.visible').click()\ncy.get('form').within(function ($form) {\n  // cy.get() will only search for elements within form, not within the entire document\n  cy.get('input[type = \"email\"]').type('muthash@github.com');\n  cy.get('input[type = \"password\"]').type('muthash123');\n  cy.root().submit(); // submits the form yielded from 'within'\n});\ncy.contains('Your Feed', {\n  timeout: 10000\n}).should('be.visible');\ncy.contains('Global Feed').should('be.visible');",
+              "err": {},
+              "uuid": "50190f50-1a26-4705-a4f7-f4065b08c192",
+              "parentUUID": "f8cd4fb7-84ef-45f0-881f-3c3e989394f0",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Create a post",
+              "fullTitle": "Create and mark-unmark as favorite Create a post",
+              "timedOut": null,
+              "duration": 1786,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// cy.contains('New Post').click()\ncy.get('ul.navbar-nav').children().contains('New Post').click(); // cy.location('hash').should('include','#/editor')\ncy.hash().should('include', '#/editor'); // cy.get('input[placeholder=\"Article Title\"]').type('Test This Title')\n// cy.get('input[placeholder=\"What\\'s this article about?\"]').type('Test this input')\n// cy.get('textarea[placeholder=\"Write your article (in markdown)\"]').type('Test this textarea')\n// cy.contains('Publish Article').click()\ncy.get('form').within(function ($form) {\n  cy.get('input').first().type('Test');\n  cy.get('input').eq(1).type('Test 1');\n  cy.get('textarea').last().type('Test 2');\n  cy.contains('Publish Article').click();\n});\ncy.url().should('include', 'article');",
+              "err": {},
+              "uuid": "e60a936a-0d76-4545-8532-67790ffd7897",
+              "parentUUID": "f8cd4fb7-84ef-45f0-881f-3c3e989394f0",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Mark-unmark as favorite",
+              "fullTitle": "Create and mark-unmark as favorite Mark-unmark as favorite",
+              "timedOut": null,
+              "duration": 3984,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// cy.get('.nav-link').contains('muthash').click()\ncy.get('ul.navbar-nav').children().contains('muthash').click();\ncy.contains('My Articles').should('be.visible');\ncy.get('.ion-heart').first().click();\ncy.contains('Favorited Articles').click();\ncy.url().should('include', 'favorites');\ncy.get('.ion-heart').first().click();\ncy.reload();\ncy.contains('No articles are here... yet.').should('be.visible');\ncy.go('back'); //cy.go(-1)\n//cy.go('forward')\n//cy.go(1)",
+              "err": {},
+              "uuid": "17b4b542-68b4-4711-9161-b09d08378970",
+              "parentUUID": "f8cd4fb7-84ef-45f0-881f-3c3e989394f0",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "50190f50-1a26-4705-a4f7-f4065b08c192",
+            "e60a936a-0d76-4545-8532-67790ffd7897",
+            "17b4b542-68b4-4711-9161-b09d08378970"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 9531,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "e0f61452-71b4-47b2-9860-99d35ace0eae",
+      "title": "",
+      "fullFile": "cypress/test/conduit/SM03_custom_command.spec.js",
+      "file": "cypress/test/conduit/SM03_custom_command.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "3527b6bc-1fb1-493a-8f43-9c7eb525bf8b",
+          "title": "Create and mark-unmark as favorite",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Create a post",
+              "fullTitle": "Create and mark-unmark as favorite Create a post",
+              "timedOut": null,
+              "duration": 5784,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('ul.navbar-nav').children().contains('New Post').click();\ncy.hash().should('include', '#/editor');\ncy.get('form').within(function ($form) {\n  cy.get('input').first().type('Test');\n  cy.get('input').eq(1).type('Test 1');\n  cy.get('textarea').last().type('Test 2');\n  cy.contains('Publish Article').click();\n});\ncy.url().should('include', 'article');",
+              "err": {},
+              "uuid": "06a74ed4-3251-43aa-a300-b838eeb2ac12",
+              "parentUUID": "3527b6bc-1fb1-493a-8f43-9c7eb525bf8b",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Mark-unmark as favorite",
+              "fullTitle": "Create and mark-unmark as favorite Mark-unmark as favorite",
+              "timedOut": null,
+              "duration": 4327,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('ul.navbar-nav').children().contains('muthash').click();\ncy.contains('My Articles').should('be.visible');\ncy.get('.ion-heart').first().click();\ncy.contains('Favorited Articles').click();\ncy.url().should('include', 'favorites');\ncy.get('.article-preview').within(function ($preview) {\n  cy.get('.ion-heart').click({\n    multiple: true\n  });\n});\ncy.reload();\ncy.contains('No articles are here... yet.').should('be.visible');\ncy.go('back');",
+              "err": {},
+              "uuid": "69b781ec-70b1-4295-bedf-38cc4380fa52",
+              "parentUUID": "3527b6bc-1fb1-493a-8f43-9c7eb525bf8b",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "06a74ed4-3251-43aa-a300-b838eeb2ac12",
+            "69b781ec-70b1-4295-bedf-38cc4380fa52"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 10111,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "f7aa8d51-3c9b-4ffa-9b99-0599d5e29dbc",
+      "title": "",
+      "fullFile": "cypress/test/conduit/SM04_thenCommand.spec.js",
+      "file": "cypress/test/conduit/SM04_thenCommand.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "0e7e9316-2e58-4523-9ee2-26e5e72471d0",
+          "title": "Create and mark-unmark as favorite",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Create a post",
+              "fullTitle": "Create and mark-unmark as favorite Create a post",
+              "timedOut": null,
+              "duration": 5371,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('ul.navbar-nav').children().contains('New Post').click();\ncy.hash().should('include', '#/editor');\ncy.get('form').within(function ($form) {\n  cy.get('input').first().type('Test');\n  cy.get('input').eq(1).type('Test 1');\n  cy.get('textarea').last().type('Test 2');\n  cy.contains('Publish Article').click();\n});\ncy.url().should('include', 'article');",
+              "err": {},
+              "uuid": "4e289af0-587f-4991-9ecb-b18efae935e5",
+              "parentUUID": "0e7e9316-2e58-4523-9ee2-26e5e72471d0",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Mark-unmark as favorite",
+              "fullTitle": "Create and mark-unmark as favorite Mark-unmark as favorite",
+              "timedOut": null,
+              "duration": 3149,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('ul.navbar-nav').children().contains('muthash').click();\ncy.contains('My Articles').should('be.visible');\ncy.get('.ion-heart').first().click();\ncy.contains('Favorited Articles').click();\ncy.url().should('include', 'favorites');\ncy.get('.btn-primary').first().then(function ($fav) {\n  var favCount = $fav.text();\n  expect(parseInt(favCount)).to.eq(1);\n}).click();\ncy.reload();\ncy.contains('No articles are here... yet.').should('be.visible');\ncy.go('back');",
+              "err": {},
+              "uuid": "19427b62-e331-4253-b930-7ea83793ee0a",
+              "parentUUID": "0e7e9316-2e58-4523-9ee2-26e5e72471d0",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "4e289af0-587f-4991-9ecb-b18efae935e5",
+            "19427b62-e331-4253-b930-7ea83793ee0a"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 8520,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "70f1df79-28c6-43ea-8691-ef6571db74eb",
+      "title": "",
+      "fullFile": "cypress/test/conduit/SM05_aliases.spec.js",
+      "file": "cypress/test/conduit/SM05_aliases.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "246f18b2-893c-466b-955e-5cf326b3d190",
+          "title": "Create and mark-unmark as favorite",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Create a post",
+              "fullTitle": "Create and mark-unmark as favorite Create a post",
+              "timedOut": null,
+              "duration": 5100,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('ul.navbar-nav').children().as('menu');\ncy.get('@menu').contains('New Post').click();\ncy.hash().should('include', '#/editor');\ncy.get('form').within(function ($form) {\n  cy.get('input').first().type('Test');\n  cy.get('input').eq(1).type('Test 1');\n  cy.get('textarea').last().type('Test 2');\n  cy.contains('Publish Article').click();\n});\ncy.url().should('include', 'article');",
+              "err": {},
+              "uuid": "93851c4a-f45f-45c8-a297-ae071c9dc7ab",
+              "parentUUID": "246f18b2-893c-466b-955e-5cf326b3d190",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Mark-unmark as favorite",
+              "fullTitle": "Create and mark-unmark as favorite Mark-unmark as favorite",
+              "timedOut": null,
+              "duration": 5968,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('ul.navbar-nav').children().as('menu');\ncy.get('@menu').contains('muthash').click();\ncy.contains('My Articles').should('be.visible');\ncy.get('.ion-heart').first().click();\ncy.contains('Favorited Articles').click();\ncy.url().should('include', 'favorites');\ncy.get('.btn-primary').first().then(function ($fav) {\n  return $fav.text();\n}).as('favCount');\ncy.get('@favCount').then(function ($cnt) {\n  expect(parseInt($cnt)).to.eq(1);\n});\ncy.get('.btn-primary').first().click();\ncy.reload();\ncy.contains('No articles are here... yet.').should('be.visible');\ncy.go('back');",
+              "err": {
+                "message": "AssertionError: Timed out retrying: Expected to find element: `.btn-primary`, but never found it.",
+                "estack": "AssertionError: Timed out retrying: Expected to find element: `.btn-primary`, but never found it.\n    at Context.eval (https://react-redux.realworld.io/__cypress/tests?p=cypress/test/conduit/SM05_aliases.spec.js:28:8)",
+                "diff": null
+              },
+              "uuid": "b9a3de47-d37e-4486-a2e9-f7a34441a474",
+              "parentUUID": "246f18b2-893c-466b-955e-5cf326b3d190",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "93851c4a-f45f-45c8-a297-ae071c9dc7ab"
+          ],
+          "failures": [
+            "b9a3de47-d37e-4486-a2e9-f7a34441a474"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 11068,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "8a58c0bc-c389-4ae0-8391-e0e95a090ed5",
+      "title": "",
+      "fullFile": "cypress/test/conduit/SM06_plugin_uploadFiles.spec.js",
+      "file": "cypress/test/conduit/SM06_plugin_uploadFiles.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "9250a8af-8c81-43c4-9566-40c1e192691f",
+          "title": "Working with plugins",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "File upload",
+              "fullTitle": "Working with plugins File upload",
+              "timedOut": null,
+              "duration": 1515,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://cgi-lib.berkeley.edu/ex/fup.html'); // upload file\nvar fileName = 'printing.txt';\n/* For cypress-file-upload version < 4.0.0\ncy.fixture(fileName).then(fileContent => {\n    cy.get('[type=\"file\"]').upload({ fileContent, fileName, mimeType: 'application/pdf' });\n})*/\n// For cypress-file-upload version > 4.0.0\ncy.get('[type=\"file\"]').attachFile(fileName);\ncy.get('[type=\"submit\"]').click();\ncy.contains(\"You've uploaded a file. Your notes on the file were:\", {\n  timeout: 10000\n});",
+              "err": {},
+              "uuid": "45275e07-9ea0-4641-aff6-3c492ac8eb4c",
+              "parentUUID": "9250a8af-8c81-43c4-9566-40c1e192691f",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "45275e07-9ea0-4641-aff6-3c492ac8eb4c"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1515,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.1.1"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports/mocha",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "5.1.0"
+    }
+  }
+}
