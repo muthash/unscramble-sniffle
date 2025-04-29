@@ -1,2 +1,2 @@
 # unscramble-sniffle
-Playground for cool stuff
+Playground for just stuff. Nothing cool.
